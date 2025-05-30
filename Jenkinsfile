@@ -1,9 +1,6 @@
 pipeline{
     agent any
 
-
-    environment{
-        SONARQUBE_SCANNER_HOME = tool 'SonarQube Scanner'
     }
 
     stages{
@@ -29,13 +26,6 @@ pipeline{
                 echo 'Running test'
                 sh 'mvn test -e'
             }
-        }
-        stage('SonarQube Analysis'){
-            steps{
-                withSonarQubeEnv('SonarQube'){
-                sh 'mvn sonar:sonar'}
-            }
-
         }
 
     }
